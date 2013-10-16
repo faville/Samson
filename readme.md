@@ -16,7 +16,7 @@ as objects as well without having to write out requests as explicit strings.
 
 Show Me the Code
 ------------
-
+```C#
 	var dataContext = new MinistryPlatformDataContext();
 
 	//get a congregation
@@ -43,7 +43,7 @@ Show Me the Code
 	};
 
 	dataContext.Create<Congregation>(newModel);
-
+```
 Other Features
 ---------
 Samson also has methods that map to the most commonly used methods of the Ministry
@@ -67,8 +67,9 @@ How to Install
 --------------
 Download the Samson.Core and Samson.Model projects. Before you run the T4 template
 and compile and run, make sure that any application that uses Samson has the following in it's 
-app.config or web.config file
-
+app.config or web.config file. I will uploading a SQL script soon that generates the 4 stored 
+procedures needed, but they're pretty simple to figure out on your own if you want to.
+```XML
 	<system.serviceModel>
 		<bindings>
 			<basicHttpBinding>
@@ -79,13 +80,13 @@ app.config or web.config file
 			<endpoint address="http://yourservername.com/ministryplatform/public/api.asmx" binding="basicHttpBinding" bindingConfiguration="apiSoap" contract="MinistryPlatform.apiSoap" name="apiSoap" />
 		</client>
 	</system.serviceModel>
-
+```
 If you want to provide application-wide configuration for Samson, use this:
-
+```XML
     <add key="mpguid" value="your-api-key" />
     <add key="mppw" value="your-api-password" />
     <add key="mpserver" value="servername" />
-
+```
 There are provided pre-generated classes that *should* work with any default Ministry 
 Platform database. But there's no gaurantees of course :)
 
